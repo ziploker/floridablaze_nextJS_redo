@@ -10,6 +10,11 @@ const config: Config = {
     screens: {
       leaf_bp_520px: "520px",
 
+      cl_bp_295: "295px",
+      cl_bp_520: "520px",
+      cl_bp_731: "731px",
+      cl_bp_985: "985px",
+
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 

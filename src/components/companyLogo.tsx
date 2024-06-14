@@ -6,7 +6,7 @@ import tag_line from "@/images/tagline2.svg";
 
 export default function CompanyLogo() {
   return (
-    <div>
+    <div className="grid grid-cols-1 w-[200px] ml-[15px] justify-self-start self-center cl_bp_520:w-[265px]">
       <Image
         className="justify-self-start self-center w-250"
         src={company_logo}
