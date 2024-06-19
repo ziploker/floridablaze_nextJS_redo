@@ -35,7 +35,7 @@ export default function CompanyLogo(props: Props) {
 	return (
 		<div
 			ref={logoTextRef}
-			className={`grid grid-cols-1 gap-[10px] w-[171px] ml-[15px] mb-[8px] justify-self-start self-center cl_bp_295:ml-[20px]  ${
+			className={`grid grid-in-[left] grid-cols-1 gap-[10px] w-[171px] ml-[15px] mb-[8px] justify-self-start self-center cl_bp_295:ml-[20px]  ${
 				props.logoScrolled === "true"
 					? "fixed top-[14px] cl_bp_731:w-[260px] cl_bp_520:top-[10px] cl_bp_295:w-[160px] cl_bp_520:w-[225px] cl_bp_985:w-[260px]"
 					: "absolute top-[4px] cl_bp_731:w-[300px] cl_bp_520:top-[4px] cl_bp_295:w-[200px] cl_bp_520:w-[265px] cl_bp_985:w-[300px]"
