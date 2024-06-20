@@ -15,6 +15,8 @@ const config: Config = {
 			cl_bp_731: "731px",
 			cl_bp_985: "985px",
 
+			longNav_bp_600: "600px",
+
 			sm: "640px",
 			// => @media (min-width: 640px) { ... }
 
