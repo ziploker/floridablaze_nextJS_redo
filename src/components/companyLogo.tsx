@@ -49,7 +49,7 @@ export default function CompanyLogo(props: Props) {
 				width={300}
 			/>
 			<Image
-				className={`justify-self-start w-[112%] ml-[1px] ease-linear duration-[.3s]   ${
+				className={`justify-self-start w-[93%] ml-[1px] ease-linear duration-[.3s]   ${
 					props.logoScrolled === "true"
 						? "opacity-0 max-h-[0px] max-w-[0px] scale(.1)"
 						: "opacity-100 max-h-[50px] max-w-[500px] scale(1)"
