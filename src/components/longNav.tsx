@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 
 interface Props {
 	loggedInStatus?: string
@@ -17,26 +17,9 @@ interface Props {
 }
 
 export default function LongNav(props: Props) {
-	const [pixlesFromLongNavToTop, setPixlesFromLongNavToTop] = useState(1)
 	const longNavRef = useRef<HTMLInputElement>(null)
 
 	useEffect(() => {
-		if (longNavRef.current) {
-			console.log(
-				"What is the longNavRef.current.getBoundingClientRect().top",
-				longNavRef.current.getBoundingClientRect().top
-			)
-			longNavRef.current.getBoundingClientRect().top == 0
-				? null
-				: setPixlesFromLongNavToTop(longNavRef.current.getBoundingClientRect().top)
-		}
-
-		if (longNavRef.current) {
-			setPixlesFromLongNavToTop(
-				longNavRef.current.getBoundingClientRect().top //-30
-			)
-		}
-
 		window.addEventListener("scroll", handleScroll)
 		return () => window.removeEventListener("scroll", handleScroll)
 	}, [])
@@ -73,9 +56,11 @@ export default function LongNav(props: Props) {
 	}, [props.scrollDir])
 
 	const handleScroll = () => {
-		window.scrollY >= pixlesFromLongNavToTop + 25
-			? props.setLongNavScrolled("true")
-			: props.setLongNavScrolled("false")
+		if (longNavRef.current) {
+			window.scrollY >= longNavRef.current.getBoundingClientRect().top + 25
+				? props.setLongNavScrolled("true")
+				: props.setLongNavScrolled("false")
+		}
 
 		window.scrollY >= 60
 			? props.setLeafScrolledSoChangeColorDown("true")
@@ -102,22 +87,22 @@ export default function LongNav(props: Props) {
 					: "text-black"
 			}`}
 		>
-			<ul className="list-none mr-[40px] grid items-baseline text-inherit self-center grid-cols-longNav">
+			<ul className="list-none mr-[40px] grid items-baseline text-[1rem] sm:text-[1.5rem] self-center grid-cols-longNav">
 				<li
-					className="font-fira font-bold items-baseline px-[5px] py-[0px] text-[1.5rem] leading-[45px] text-inherit list-none grid cursor-pointer"
+					className="font-fira font-bold items-baseline px-[5px] py-[0px] leading-[45px] text-inherit list-none grid cursor-pointer"
 					key={0}
 				>
 					news
 				</li>
 				{/* <li key={1} onClick={props.executeScrollForLookupSection}>*/}
 				<li
-					className="font-fira font-bold items-baseline px-[5px] py-[0px] text-[1.5rem] leading-[45px] text-inherit list-none grid cursor-pointer"
+					className="font-fira font-bold items-baseline px-[5px] py-[0px] leading-[45px] text-inherit list-none grid cursor-pointer"
 					key={1}
 				>
 					act
 				</li>
 				<li
-					className="font-fira font-bold items-baseline px-[5px] py-[0px] text-[1.5rem] leading-[45px] text-inherit list-none grid cursor-pointer"
+					className="font-fira font-bold items-baseline px-[5px] py-[0px] leading-[45px] text-inherit list-none grid cursor-pointer"
 					key={2}
 				>
 					shop

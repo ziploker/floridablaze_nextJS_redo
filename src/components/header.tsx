@@ -6,6 +6,7 @@ import leaf from "@/images/headerLeafv2.png"
 import CompanyLogo from "@/components/companyLogo"
 import LongNav from "@/components/longNav"
 import Hamburger from "@/components/hamburger"
+import SideMenu from "../components/sidemenu"
 
 interface Props {
 	openSideMenu: string
@@ -17,7 +18,8 @@ export default function Header(props: Props) {
 	const [leafScrolledSoChangeColorDown, setLeafScrolledSoChangeColorDown] = React.useState("false")
 	const [leafScrolledSoChangeColorUp, setLeafScrolledSoChangeColorUp] = React.useState("false")
 	const [scrollDir, setScrollDir] = useState("scrolling down")
-
+	const [hamburgerScrolled, setHamburgerScrolled] = useState("false")
+	const [openSideMenu, setOpenSideMenu] = useState("false")
 	const userState = { loggedInStatus: "NOT_LOGGED_IN" }
 
 	return (
@@ -47,9 +49,17 @@ export default function Header(props: Props) {
 			<Hamburger
 				leafScrolledSoChangeColorDown={leafScrolledSoChangeColorDown}
 				leafScrolledSoChangeColorUp={leafScrolledSoChangeColorUp}
-				openSideMenu={props.openSideMenu}
-				setOpenSideMenu={props.setOpenSideMenu}
+				openSideMenu={openSideMenu}
+				setOpenSideMenu={setOpenSideMenu}
 				scrollDir={scrollDir}
+				hamburgerScrolled={hamburgerScrolled}
+				setHamburgerScrolled={setHamburgerScrolled}
+			/>
+			<SideMenu
+				userState={userState}
+				hamburgerScrolled={hamburgerScrolled}
+				openSideMenu={openSideMenu}
+				setOpenSideMenu={setOpenSideMenu}
 			/>
 		</div>
 	)

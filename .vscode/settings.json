@@ -1,4 +1,11 @@
 {
 	"typescript.tsdk": "node_modules/typescript/lib",
-	"cSpell.ignoreWords": ["Leafv", "Pixles"]
+	"cSpell.ignoreWords": [
+		"Leafv",
+		"Pixles",
+		"floridablaze",
+		"sdsdfsdfsdfsdfsdf",
+		"sidemenu",
+		"useeffect"
+	]
 }

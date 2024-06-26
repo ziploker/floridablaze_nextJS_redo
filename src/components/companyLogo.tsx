@@ -11,25 +11,26 @@ interface Props {
 }
 
 export default function CompanyLogo(props: Props) {
-	const [pixlesFromLogoToTop, setPixlesFromLogoToTop] = useState(1)
+	//const [pixlesFromLogoToTop, setPixlesFromLogoToTop] = useState(1)
 	const logoTextRef = useRef<HTMLInputElement>(null)
 
 	useEffect(() => {
-		if (logoTextRef.current) {
-			setPixlesFromLogoToTop(
-				logoTextRef.current.getBoundingClientRect().top //-30
-			)
-		}
+		// if (logoTextRef.current) {
+		// 	setPixlesFromLogoToTop(
+		// 		logoTextRef.current.getBoundingClientRect().top //-30
+		// 	)
+		// }
 
 		window.addEventListener("scroll", handleScroll)
 		return () => window.removeEventListener("scroll", handleScroll)
 	}, [])
 
 	const handleScroll = () => {
-		// window.scrollY >= pixlesFromLogoToTop - 4
-		window.scrollY >= pixlesFromLogoToTop + 1
-			? props.setLogoScrolled("true")
-			: props.setLogoScrolled("false")
+		if (logoTextRef.current) {
+			window.scrollY >= logoTextRef.current.getBoundingClientRect().top + 1
+				? props.setLogoScrolled("true")
+				: props.setLogoScrolled("false")
+		}
 	}
 
 	return (
@@ -38,7 +39,7 @@ export default function CompanyLogo(props: Props) {
 			className={`grid grid-in-[left] grid-cols-1 gap-[10px] w-[171px] ml-[15px] mb-[8px] justify-self-start self-center cl_bp_295:ml-[20px]  ${
 				props.logoScrolled === "true"
 					? "fixed top-[14px] cl_bp_731:w-[260px] cl_bp_520:top-[10px] cl_bp_295:w-[160px] cl_bp_520:w-[225px] cl_bp_985:w-[260px]"
-					: "absolute top-[4px] cl_bp_731:w-[300px] cl_bp_520:top-[4px] cl_bp_295:w-[200px] cl_bp_520:w-[265px] cl_bp_985:w-[300px]"
+					: "fixed top-[20px] cl_bp_731:w-[300px] cl_bp_520:top-[23px] cl_bp_295:w-[200px] cl_bp_520:w-[265px] cl_bp_985:w-[300px]"
 			} cl_bp_985:ml-[50px] z-30 cursor-pointer ease-linear duration-[.3s] 
       }`}
 		>
