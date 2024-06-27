@@ -1,7 +1,7 @@
 "use client"
 
 //import React, { useEffect, useRef } from "react"
-
+import Link from "next/link"
 interface Props {
 	hamburgerScrolled: string
 	openSideMenu: string
@@ -14,21 +14,34 @@ export default function SideMenu(props: Props) {
 		<nav
 			className={`grid grid-cols-[minmax(10px,1fr)20fr] bg-[#f4f4f4] h-screen text-left fixed w-full top-0 left-0 ${
 				props.openSideMenu == "true" ? "transform translate-x-0" : "transform translate-x-full"
-			}`}
+			} ${
+				props.hamburgerScrolled == "true" ? "pt-[70px]" : "pt-[150px]"
+			} ease-linear duration-[.2s] z-20`}
 		>
 			<div style={{ gridArea: "1/2/-1/-1" }}>
-				<a key={1} style={{ borderBottom: "2px orange solid" }} href="/">
-					<span>Home</span>
+				<a
+					className="font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
+					key={1}
+					style={{ borderBottom: "2px orange solid" }}
+					href="/"
+				>
+					<span className="mb-[20px] block text-[2rem]">Home</span>
 				</a>
 				<a
+					className="cursor-pointer font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
 					style={{ borderBottom: "2px orange solid" }}
 					key={2}
 					//onClick={props.executeScrollForLookupSection}
 				>
-					<span>Act</span>
+					<span className="mb-[20px] block text-[2rem]">Act</span>
 				</a>
-				<a key={3} style={{ borderBottom: "2px orange solid" }} href="#">
-					<span>Shop</span>
+				<a
+					className="font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
+					key={3}
+					style={{ borderBottom: "2px orange solid" }}
+					href="#"
+				>
+					<span className="mb-[20px] block text-[2rem]">Shop</span>
 				</a>
 				<div
 					style={{
@@ -39,23 +52,39 @@ export default function SideMenu(props: Props) {
 				<div style={{ paddingTop: "40px" }} key={4}>
 					{props.userState.loggedInStatus == "LOGGED_IN"
 						? [
-								<a style={{ fontSize: "4vw" }} key={"a"} onClick={props.handleLogOutClick}>
+								<a
+									className="cursor-pointer font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
+									key={"a"}
+									onClick={props.handleLogOutClick}
+								>
 									{" "}
 									Logout{" "}
 								</a>,
-								<span key={"line"} style={{ fontSize: "4vw" }}>
+								<span className="mb-[20px] block text-[2rem]" key={"line"}>
 									|{" "}
 								</span>,
-								<Link style={{ fontSize: "4vw" }} key={"b"} to="/edit">
+								<Link
+									className="cursor-pointer font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
+									key={"b"}
+									href="/edit"
+								>
 									edit{" "}
 								</Link>,
 						  ]
 						: [
-								<a style={{ fontSize: "4vw" }} key={"c"} onClick={props.doSomething}>
+								<a
+									className="cursor-pointer font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
+									key={"c"}
+									onClick={props.doSomething}
+								>
 									{" "}
 									Login |
 								</a>,
-								<a style={{ fontSize: "4vw" }} key={"d"} onClick={props.executeScrollForSection2}>
+								<a
+									className="cursor-pointer font-bold tracking-[.1rem] text-[#465772] decoration-[none] ease-linear duration-[.3s] hover:text-[#f7c562]"
+									key={"d"}
+									onClick={props.executeScrollForSection2}
+								>
 									{" "}
 									Signup
 								</a>,
