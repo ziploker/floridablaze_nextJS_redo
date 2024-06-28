@@ -1,7 +1,12 @@
+"use client";
 //interface Props {
 // openSideMenu: string
 // setOpenSideMenu: (word: string) => void
 //}
-export default function Home() {
-	return <h1>THIS IS HOME</h1>
+
+interface Props extends React.PropsWithChildren {}
+
+export default function Home({ children }: Props): JSX.Element {
+  console.log("=================================== home");
+  return <>{children}</>;
 }
