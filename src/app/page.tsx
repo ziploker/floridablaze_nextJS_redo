@@ -1,6 +1,5 @@
 import "server-only";
 import Image from "next/image";
-import Header from "@/components/header";
 //import React, { useEffect, useState, useRef } from "react";
 import Home from "../components/home";
 import MSC from "@/components/myServerComp";
@@ -11,7 +10,7 @@ export default function Page() {
   return (
     <div>
       {/* <Header openSideMenu={openSideMenu} setOpenSideMenu={setOpenSideMenu} /> */}
-      <Header />
+
       <Home>
         <MSC data="123" />
       </Home>

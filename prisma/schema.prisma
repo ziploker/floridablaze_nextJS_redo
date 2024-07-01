@@ -1,0 +1,180 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model active_storage_attachments {
+  id                   BigInt               @id @default(autoincrement())
+  name                 String               @db.VarChar
+  record_type          String               @db.VarChar
+  record_id            BigInt
+  blob_id              BigInt
+  created_at           DateTime             @db.Timestamp(6)
+  active_storage_blobs active_storage_blobs @relation(fields: [blob_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_c3b3935057")
+
+  @@unique([record_type, record_id, name, blob_id], map: "index_active_storage_attachments_uniqueness")
+  @@index([blob_id], map: "index_active_storage_attachments_on_blob_id")
+}
+
+model active_storage_blobs {
+  id                             BigInt                           @id @default(autoincrement())
+  key                            String                           @unique(map: "index_active_storage_blobs_on_key") @db.VarChar
+  filename                       String                           @db.VarChar
+  content_type                   String?                          @db.VarChar
+  metadata                       String?
+  service_name                   String                           @db.VarChar
+  byte_size                      BigInt
+  checksum                       String?                          @db.VarChar
+  created_at                     DateTime                         @db.Timestamp(6)
+  active_storage_attachments     active_storage_attachments[]
+  active_storage_variant_records active_storage_variant_records[]
+}
+
+model active_storage_variant_records {
+  id                   BigInt               @id @default(autoincrement())
+  blob_id              BigInt
+  variation_digest     String               @db.VarChar
+  active_storage_blobs active_storage_blobs @relation(fields: [blob_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_993965df05")
+
+  @@unique([blob_id, variation_digest], map: "index_active_storage_variant_records_uniqueness")
+}
+
+model ar_internal_metadata {
+  key        String   @id @db.VarChar
+  value      String?  @db.VarChar
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+}
+
+model comments {
+  id                      BigInt     @id @default(autoincrement())
+  edit_history            String?    @default("")
+  commentable_id          Int?
+  commentable_type        String?    @db.VarChar
+  user_id                 BigInt
+  reply                   Boolean?   @default(false)
+  comment_number          Int?
+  body                    String?
+  date                    String?    @db.VarChar
+  author_nick             String?    @db.VarChar
+  author_avatar           String?    @db.VarChar
+  created_at              DateTime   @db.Timestamp(6)
+  updated_at              DateTime   @db.Timestamp(6)
+  original_comment_author String?    @db.VarChar
+  parent_id               String?    @db.VarChar
+  ancestry                String?    @db.VarChar
+  total_upvotes           Int?       @default(0)
+  total_downvotes         Int?       @default(0)
+  users                   users      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_03de2dc08c")
+  dislikes                dislikes[]
+  likes                   likes[]
+
+  @@index([ancestry], map: "index_comments_on_ancestry")
+  @@index([user_id], map: "index_comments_on_user_id")
+}
+
+model communications {
+  id                      BigInt   @id @default(autoincrement())
+  date                    String?  @db.VarChar
+  com_type                String?  @db.VarChar
+  recipient               String?  @db.VarChar
+  status                  String?  @db.VarChar
+  user_id                 BigInt?
+  postgrid_id             String?  @db.VarChar
+  paypal_full_object      Json?    @default("{}") @db.Json
+  postgrid_full_object    Json?    @default("{}") @db.Json
+  created_at              DateTime @db.Timestamp(6)
+  updated_at              DateTime @db.Timestamp(6)
+  formatted_date          String?  @db.VarChar
+  mailgun_id              String?  @db.VarChar
+  mailgun_recipient_email String?  @db.VarChar
+  users                   users?   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_ec1e4a87d6")
+
+  @@index([user_id], map: "index_communications_on_user_id")
+}
+
+model dislikes {
+  id         BigInt   @id @default(autoincrement())
+  user_id    BigInt
+  comment_id BigInt
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+  users      users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_4381bad317")
+  comments   comments @relation(fields: [comment_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_6b4ce69b85")
+
+  @@index([comment_id], map: "index_dislikes_on_comment_id")
+  @@index([user_id], map: "index_dislikes_on_user_id")
+}
+
+model likes {
+  id         BigInt   @id @default(autoincrement())
+  user_id    BigInt
+  comment_id BigInt
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+  users      users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_1e09b5dabf")
+  comments   comments @relation(fields: [comment_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_e92b21943f")
+
+  @@index([comment_id], map: "index_likes_on_comment_id")
+  @@index([user_id], map: "index_likes_on_user_id")
+}
+
+model newsletters {
+  id         BigInt   @id @default(autoincrement())
+  email      String?  @db.VarChar
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+}
+
+model schema_migrations {
+  version String @id @db.VarChar
+}
+
+model stories {
+  id            BigInt   @id @default(autoincrement())
+  title         String?  @db.VarChar
+  keywords      String?  @db.VarChar
+  body          String?
+  url           String?  @db.VarChar
+  date          String?  @db.VarChar
+  topic         String?  @db.VarChar
+  slug          String?  @db.VarChar
+  author_nick   String?  @db.VarChar
+  author_avatar String?  @db.VarChar
+  created_at    DateTime @db.Timestamp(6)
+  updated_at    DateTime @db.Timestamp(6)
+  caption       String?
+  urls          String[] @default([])
+  alt           String?  @default("") @db.VarChar
+  description   String?  @default("") @db.VarChar
+}
+
+model users {
+  id                       BigInt           @id @default(autoincrement())
+  email                    String?          @db.VarChar
+  full_name                String?          @db.VarChar
+  password_digest          String?          @db.VarChar
+  confirm_token            String?          @db.VarChar
+  isAdmin                  Boolean?
+  email_confirmed          String?          @db.VarChar
+  opt_in                   Boolean?
+  created_at               DateTime         @db.Timestamp(6)
+  updated_at               DateTime         @db.Timestamp(6)
+  avatar_url               String?          @db.VarChar
+  nick                     String?          @db.VarChar
+  auth_token               String?          @db.VarChar
+  number_of_comments       Int?             @default(0)
+  userCreatedAutomatically Boolean?         @default(false)
+  first_name               String?          @db.VarChar
+  last_name                String?          @db.VarChar
+  reset_password_token     String?          @db.VarChar
+  reset_password_sent_at   DateTime?        @db.Timestamp(6)
+  comments                 comments[]
+  communications           communications[]
+  dislikes                 dislikes[]
+  likes                    likes[]
+}
