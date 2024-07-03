@@ -14,6 +14,5 @@ export const addStory = async (formData: FormData) => {
 		},
 	})
 
-	console.log("999999999999999999999999999", title)
 	revalidatePath("/ziploker")
 }
