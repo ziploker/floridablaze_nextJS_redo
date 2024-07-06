@@ -3,13 +3,14 @@ import Image from "next/image"
 //import React, { useEffect, useState, useRef } from "react";
 import Home from "../components/home"
 import Msc from "@/components/myServerComp"
+import Header from "@/components/header"
 
 export default function Page() {
 	//const [openSideMenu, setOpenSideMenu] = useState("false");
 
 	return (
 		<div>
-			{/* <Header openSideMenu={openSideMenu} setOpenSideMenu={setOpenSideMenu} /> */}
+			<Header />
 
 			<Home>
 				{/*@ts-expect-error Async Server Component*/}
