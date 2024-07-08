@@ -1,14 +1,22 @@
 {
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"cSpell.ignoreWords": [
+		"Dont",
+		"FORMDATA",
+		"Friendlt",
 		"Leafv",
 		"Pixles",
 		"Ziploker",
+		"actionnnnnnnn",
 		"floridablaze",
+		"friendlyDate",
 		"nameeeeee",
 		"sdsdfsdfsdfsdfsdf",
 		"sidemenu",
+		"testr",
 		"useeffect",
-		"valluuee"
+		"valluuee",
+		"vari",
+		"visisble"
 	]
 }

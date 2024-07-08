@@ -2,6 +2,7 @@
 import { useState } from "react"
 import ImageUploading, { ImageListType } from "react-images-uploading"
 import Image from "next/image"
+import FormAddStory from "../components/formAddStory"
 
 //Actions
 import { UploadImage } from "../../actions/actions"
@@ -9,6 +10,7 @@ import { UploadImage } from "../../actions/actions"
 const ImageUploader = () => {
 	//State
 	const [image, setImage] = useState<ImageListType>([])
+	const [awsResponse, setAwsResponse] = useState({})
 
 	//OnImageChange
 	const onImageChange = async (imageList: ImageListType) => {
@@ -20,6 +22,7 @@ const ImageUploader = () => {
 			//Here I am calling the server action function
 			const data = await UploadImage(formData)
 			console.log(data)
+			setAwsResponse(data)
 		}
 	}
 	return (
@@ -50,21 +53,22 @@ const ImageUploader = () => {
 								</div>
 							</button>
 						)}
-						{imageList.length > 0 &&
+						{/* {imageList.length > 0 &&
 							imageList.map((image, i) => (
 								<div key={i} className={`relative cursor-pointer group rounded-md overflow-hidden`}>
-									{/* <Image
+									<Image
 										src={image["fvr-url"]}
 										alt="Image"
 										width={400}
 										height={400}
 										className="w-full object-cover object-top"
-									/> */}
+									/>
 								</div>
-							))}
+							))} */}
 					</div>
 				)}
 			</ImageUploading>
+			<FormAddStory awsResponse={awsResponse} />
 		</div>
 	)
 }

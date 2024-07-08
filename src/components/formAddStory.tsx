@@ -2,49 +2,14 @@
 
 import { addStory } from "../../actions/actions"
 
-export default function FormAddStory() {
-	// const handleImageChange = (event) => {
-	// 	console.log("handleImageChange_EVENTTTTTTTTTTTTTTTTTTTTTTTT", event.target.files)
+export default function FormAddStory(props: any) {
+	const url = props.awsResponse.key
+	const addStoryWithUrlArray = addStory.bind(null, url)
 
-	// 	let imageArray = []
-
-	// 	Object.keys(event.target.files).map((item) => {
-	// 		console.log("insideHHHH KEY", event.target.files[item])
-	// 		imageArray.push(event.target.files[item])
-	// 	})
-
-	// 	// event.target.files.map((file) => {
-	// 	// 	console.log("insideMAP", file);
-	// 	// 	imageArray.push(file);
-	// 	// });
-
-	// 	//imageArray.push(event.target.files[0]);
-
-	// 	//console.log("full imageArray[0]  is ", imageArray[0]);
-
-	// 	//formData.append("event[images]", event.target.files[0]);
-	// 	//formData.append("event[images]", JSON.stringify(imageArray));
-
-	// 	for (const a of imageArray) {
-	// 		formData.append("images[]", a)
-	// 	}
-
-	// 	//console.log(...formData)
-
-	// 	// setState({
-	// 	// 	...state,
-	// 	// 	images: URL.createObjectURL(event.target.files[0]),
-	// 	// });
-
-	// 	setState((prevState) => ({
-	// 		...state,
-	// 		images: [...prevState.images, URL.createObjectURL(event.target.files[0])],
-	// 	}))
-	// }
 	return (
 		<form
 			action={async (formData) => {
-				await addStory(formData)
+				await addStoryWithUrlArray(formData)
 			}}
 			className="form-inline grid gap-[20px] justify-center p-[20px]"
 		>
@@ -67,7 +32,7 @@ export default function FormAddStory() {
 				/>
 			</div>
 
-			<div className="field w-screen h-full border border-black border-1">
+			{/* <div className="field w-screen h-full border border-black border-1">
 				<input
 					type="text"
 					className="form-control w-full h-full"
@@ -75,7 +40,7 @@ export default function FormAddStory() {
 					placeholder="slug (automatic from slugify me)"
 					readOnly
 				/>
-			</div>
+			</div> */}
 
 			<div className="field w-screen h-full border border-black border-1">
 				<input
@@ -104,14 +69,14 @@ export default function FormAddStory() {
 				/>
 			</div>
 
-			<div className="relative self-center">
+			{/* <div className="relative self-center">
 				<label
 					className="text-center inline-block absolute -right-[15px] -bottom-[13px] rounded-[50px] p-[5px] my-0 mx-auto"
 					htmlFor="images"
 				>
 					&#128393;
 				</label>
-			</div>
+			</div> */}
 
 			<div className="field w-screen h-full border border-black border-1">
 				<input
@@ -131,7 +96,7 @@ export default function FormAddStory() {
 				/>
 			</div>
 
-			<div className="field w-screen h-full border border-black border-1">
+			{/* <div className="field w-screen h-full border border-black border-1">
 				<input
 					style={{
 						width: "111px",
@@ -148,7 +113,7 @@ export default function FormAddStory() {
 					name="images"
 					multiple
 				/>
-			</div>
+			</div> */}
 
 			<div className="field w-screen h-full border border-black border-1">
 				<textarea

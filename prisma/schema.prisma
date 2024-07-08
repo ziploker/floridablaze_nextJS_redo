@@ -152,6 +152,23 @@ model stories {
   alt           String?  @default("") @db.VarChar
   description   String?  @default("") @db.VarChar
 }
+  // id: 1,                                                          
+  // title: "title of the story",                                    
+  // keywords: "tags for story",                                     
+  // body: "story body",                                             
+  // url: nil,                                                       
+  // date: "Jul 7th, 2024",                                          
+  // topic: "Local",                                                 
+  // slug: "slug-fr-the-story",                                      
+  // author_nick: nil,                                               
+  // author_avatar: nil,                                             
+  // created_at: Sun, 07 Jul 2024 18:01:28.062145000 UTC +00:00,     
+  // updated_at: Sun, 07 Jul 2024 18:01:28.094365000 UTC +00:00,     
+  // caption: "photo caption here",
+  // urls: ["https://weedblogimages.s3.amazonaws.com/wp0ku48p4hu4ebcr99fq54865q3s"],
+  // alt: "alt text for img",
+  // description: "description for meta tags">
+
 
 model users {
   id                       BigInt           @id @default(autoincrement())
