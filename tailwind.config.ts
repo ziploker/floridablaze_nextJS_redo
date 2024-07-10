@@ -19,6 +19,9 @@ const config: Config = {
 			bp520: "520px",
 			bp481: "481px",
 
+			bp700: "700px",
+			bp1000: "1000px",
+
 			longNav_bp_600: "600px",
 
 			sm: "640px",
@@ -48,6 +51,9 @@ const config: Config = {
 			gridTemplateColumns: {
 				// Simple 16 column grid
 				longNav: "repeat(6, min-content)",
+			},
+			gridTemplateAreas: {
+				home: ["one . two"],
 			},
 			fontFamily: {
 				fira: ["var(--font-fira)"],

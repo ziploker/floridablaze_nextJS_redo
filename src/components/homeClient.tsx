@@ -68,21 +68,20 @@ import Image from "next/image"
 // 	}
 // `
 
-const LinkWrapper2 = styled(Link)`
-	//grid-area: 1/1/3/2;
-	//grid-area: two;
-	grid-area: 1/1/-1/-1;
-	//max-width: 600px;
-	width: 100%;
-	justify-self: center;
-	display: grid;
-	@media only screen and (min-width: 480px) {
-		grid-area: two;
-		width: 100%;
-		justify-self: center;
-		display: grid;
-	}
-`
+// const LinkWrapper2 = styled(Link)`
+
+// 	grid-area: 1/1/-1/-1;
+
+// 	width: 100%;
+// 	justify-self: center;
+// 	display: grid;
+// 	@media only screen and (min-width: 480px) {
+// 		grid-area: two;
+// 		width: 100%;
+// 		justify-self: center;
+// 		display: grid;
+// 	}
+// `
 
 // const Img1 = styled.img`
 // 	box-shadow: 0 2px 5px 0 rgba(227, 181, 90, 0.2);
@@ -91,13 +90,13 @@ const LinkWrapper2 = styled(Link)`
 // 	width: 100%;
 // `
 
-const Img2 = styled.img`
-	box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
-	position: relative;
-	border-radius: 10px;
+// const Img2 = styled.img`
+// 	box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1);
+// 	position: relative;
+// 	border-radius: 10px;
 
-	width: 100%;
-`
+// 	width: 100%;
+// `
 
 // const Div1OverlayWrapper = styled.div`
 // 	pointer-events: none;
@@ -135,33 +134,33 @@ const Img2 = styled.img`
 // 	}
 // `
 
-const StoryOneTitle = styled.h2`
-	white-space: pre-wrap;
-	word-break: break-word;
+// const StoryOneTitle = styled.h2`
+// 	white-space: pre-wrap;
+// 	word-break: break-word;
 
-	color: white;
+// 	color: white;
 
-	padding: 0px 13px 8px 13px;
-	width: 100%;
+// 	padding: 0px 13px 8px 13px;
+// 	width: 100%;
 
-	align-self: end;
-	justify-self: center;
-	text-align: center;
-	font-size: 2rem;
+// 	align-self: end;
+// 	justify-self: center;
+// 	text-align: center;
+// 	font-size: 2rem;
 
-	@media only screen and (max-width: 1000px) {
-		font-size: 1.5rem;
-	}
-	@media only screen and (max-width: 700px) {
-		font-size: 1rem;
-	}
-	@media only screen and (max-width: 480px) {
-		font-size: 2rem;
-	}
-	h2 {
-		word-break: break-all;
-	}
-`
+// 	@media only screen and (max-width: 1000px) {
+// 		font-size: 1.5rem;
+// 	}
+// 	@media only screen and (max-width: 700px) {
+// 		font-size: 1rem;
+// 	}
+// 	@media only screen and (max-width: 480px) {
+// 		font-size: 2rem;
+// 	}
+// 	h2 {
+// 		word-break: break-all;
+// 	}
+// `
 
 const LeftFiller = styled.div`
 	grid-area: leftArrow;
@@ -181,40 +180,28 @@ const LeftFiller = styled.div`
 // 	transform: scaleX(-1);
 //`
 
-const RightArrowButton = styled.button`
-	/* width: 100%;
-  height: 100%;
-  grid-area: rightArrow;
-  align-self: center;
-  justify-self: start;
-  background: rgba(255, 255, 255, 0);
-  border: 0;
-  display: grid;
-  cursor: pointer;
+// const RightArrowButton = styled.button`
 
-  &:hover {
-    background: rgba(54, 54, 54, 0.075);
-  } */
-	cursor: pointer;
-	width: 6%;
-	height: 33.33%;
-	background: ${(props) =>
-		props.is_hovering == "true" ? "rgba(247, 247, 247, 0.6)" : "rgba(247, 247, 247, 0.27)"};
-	border: 0;
-	display: grid;
-	z-index: 1;
-	grid-area: two;
-	justify-self: end;
-	align-self: center;
-`
+// 	cursor: pointer;
+// 	width: 6%;
+// 	height: 33.33%;
+// 	background: ${(props) =>
+// 		props.is_hovering == "true" ? "rgba(247, 247, 247, 0.6)" : "rgba(247, 247, 247, 0.27)"};
+// 	border: 0;
+// 	display: grid;
+// 	z-index: 1;
+// 	grid-area: two;
+// 	justify-self: end;
+// 	align-self: center;
+// `
 
-const RightArrow = styled.img`
-	width: 100%;
+// const RightArrow = styled.img`
+// 	width: 100%;
 
-	position: relative;
-	justify-self: start;
-	align-self: center;
-`
+// 	position: relative;
+// 	justify-self: start;
+// 	align-self: center;
+// `
 
 const BackgroundGray = styled.div`
 	@media only screen and (max-width: 866px) {
@@ -1170,16 +1157,18 @@ export default function HomeClient(props: any) {
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 				//className={"box"}
-				className={`hidden bp480:grid mx-[1%] mt-0 mb-0 bp520:mt-[30px] grid-cols-[1fr_2%_1fr] grid-area-[one_two] justify_center relative min-h-full`}
+				className={`hidden bp480:grid mx-[1%] mt-0 mb-0 bp520:mt-[30px] grid-cols-[1fr_2%_1fr] grid-areas-home justify_center relative min-h-full`}
 			>
 				<div
 					ref={leftArrowRef}
 					//is_hovering={isHovering}
 					onClick={debounce(() => handleForwardPage("desktop"), 300)}
-					className={`w-[6%] h-[33.33%] border-none grid grid-in-[one] justify-start self-center`}
+					className={`cursor-pointer bg-stone-400/50 hover:bg-stone-400 w-[6%] h-[33.33%] border-none grid grid-in-[one] justify-start self-center z-[2]`}
 					//props.is_hovering == "true" ? "rgba(247, 247, 247, 0.6)" : "rgba(247, 247, 247, 0.27)"};
 				>
 					<Image
+						width={39}
+						height={39}
 						src={scrollArrow.src}
 						alt="Scroll page back to view more articles"
 						className={`w-full relative justify-self-center self-center -scale-x-[1]`}
@@ -1192,8 +1181,8 @@ export default function HomeClient(props: any) {
 						}`,
 						query: { art: props.allStories[activeStories[0]] },
 					}}
-					style={{ gridArea: "1/1/-1/-1" }}
-					className={`w-full justify-self-center grid grid-in-[one]`}
+					//style={{ gridArea: "1/1/-1/-1" }}
+					className={`w-full justify-self-center grid bp481:grid-in-[one] rounded-[10px]`}
 				>
 					<Image
 						//className="s1"
@@ -1203,15 +1192,20 @@ export default function HomeClient(props: any) {
 								? props.allStories[activeStories[0]].urls[0]
 								: defaultImage
 						}
+						//layout="fill"
+						//objectFit="contain"
+						//fill={true}
+						width={500}
+						height={420}
 						alt={props.allStories[activeStories[0]] ? props.allStories[activeStories[0]].alt : ""}
-						className={`relative rounded-[10px] w-full`}
+						className={`relative rounded-[10px] w-full z-[-1]`}
 						style={{ boxShadow: "0 2px 5px 0 rgba(227, 181, 90, 0.2)" }}
 					></Image>
 				</Link>
 				<div
 					//className="s2"
 					style={{
-						gridArea: "1/1/-1/-1",
+						//gridArea: "1/1/-1/-1",
 
 						background: "linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 145, 145, 0) 60%)",
 						filter:
@@ -1219,11 +1213,13 @@ export default function HomeClient(props: any) {
 					}}
 					className={`bp481:grid-in-[one] whitespace-nowrap grid pointer-events-none break-all rounded-[10px] overflow-hidden w-full justify-self-center leading-[1.2]`}
 				>
-					<StoryOneTitle>
+					<h2
+						className={`whitespace-pre-wrap break-words text-white px-[13px] pt-0 pb-[8px] w-full self-end text-[2rem] bp480:text-[1rem] bp700:text-[1.5rem] bp1000:text-[2rem] text-center justify-self-center`}
+					>
 						{props.allStories[activeStories[0]]
 							? props.allStories[activeStories[0]].title
 							: "Ooops! this article is not available at this time."}
-					</StoryOneTitle>
+					</h2>
 				</div>
 
 				{loadingStories ? (
@@ -1238,41 +1234,53 @@ export default function HomeClient(props: any) {
 						Loading...
 					</div>
 				) : null}
-				<RightArrowButton
-					is_hovering={isHovering}
-					onClick={isPageLoded && debounce(() => handleReversePage("desktop"), 300)}
+				<button
+					//is_hovering={isHovering}
+					onClick={debounce(() => handleReversePage("desktop"), 300)}
+					className={`cursor-pointer bg-stone-400/50 hover:bg-stone-400 self-center justify-self-end cursor-pointer w-[6%] h-[33.33%] border-none grid grid-in-[two] z-[2]`}
+					// background: ${(props) => props.is_hovering == "true" ? "rgba(247, 247, 247, 0.6)" : "rgba(247, 247, 247, 0.27)"};
 				>
-					<RightArrow
+					<Image
+						width={39}
+						height={39}
 						ref={rightArrowRef}
 						src={scrollArrow.src}
 						alt="Scroll page forward to view more articles"
-					></RightArrow>
-				</RightArrowButton>
-				<LinkWrapper2
-					href={`/blog/${
-						props.allStories[activeStories[1]] ? props.allStories[activeStories[1]].slug : "nada"
-					}`}
-					state={{ art: props.allStories[activeStories[1]] }}
+						className="relative justify-self-end self-center"
+					></Image>
+				</button>
+				<Link
+					href={{
+						pathname: `/blog/${
+							props.allStories[activeStories[1]] ? props.allStories[activeStories[1]].slug : "nada"
+						}`,
+						query: { art: props.allStories[activeStories[1]] },
+					}}
+					//style={{ gridArea: "1/1/-1/-1" }}
+					className={`w-full self-center grid bp481:grid-in-[two] rounded-[10px]`}
 				>
-					<Img2
-						className="s1"
-						// image_url={
-						//   props.allStories[activeStories[1]]
-						//     ? props.allStories[activeStories[1]].urls[0]
-						//     : defaultImage
-						// }
+					<Image
+						//className="s1"
+
 						src={
 							props.allStories[activeStories[1]]
 								? props.allStories[activeStories[1]].urls[0]
 								: defaultImage
 						}
+						//layout="fill"
+						//objectFit="contain"
+						//fill={true}
+						width={500}
+						height={420}
 						alt={props.allStories[activeStories[1]] ? props.allStories[activeStories[1]].alt : ""}
-					></Img2>
-				</LinkWrapper2>
+						className="relative rounded=[10px] w-full z-[-1] rounded-[10px]"
+						//style={{ boxShadow: "0 1px 4px 0 rgba(12, 12, 13, 0.1)" }}
+					></Image>
+				</Link>
 				<div
 					//className="s2">
 					style={{
-						gridArea: "1/1/-1/-1",
+						//gridArea: "1/1/-1/-1",
 
 						background: "linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 145, 145, 0) 60%)",
 						filter:
@@ -1280,11 +1288,13 @@ export default function HomeClient(props: any) {
 					}}
 					className={`bp481:grid-in-[two] whitespace-nowrap grid pointer-events-none break-all rounded-[10px] overflow-hidden w-full justify-self-center leading-[1.2]`}
 				>
-					<StoryOneTitle>
+					<h2
+						className={`whitespace-pre-wrap break-words text-white px-[13px] pt-0 pb-[8px] w-full self-end text-[2rem] bp480:text-[1rem] bp700:text-[1.5rem] bp1000:text-[2rem] text-center justify-self-center`}
+					>
 						{props.allStories[activeStories[1]]
 							? props.allStories[activeStories[1]].title
 							: "Ooops! this article is not available at this time."}
-					</StoryOneTitle>
+					</h2>
 				</div>
 
 				{/* <BackgroundGray></BackgroundGray> */}
@@ -1306,22 +1316,20 @@ export default function HomeClient(props: any) {
 								}`,
 								query: { art: props.allStories[activeStories[0]] },
 							}}
-							style={{ gridArea: "1/1/-1/-1" }}
+							//style={{ gridArea: "1/1/-1/-1" }}
 							className={`w-full justify-self-center grid grid-in-[one]`}
 							//ref={gsapContainer1}
 						>
 							<Image
-								//className="s1"
-								// image_url={
-								//   props.allStories[activeStories[0]]
-								//     ? props.allStories[activeStories[0]].urls[0]
-								//     : defaultImage
-								// }
 								src={
 									props.allStories[activeStories[0]]
 										? props.allStories[activeStories[0]].urls[0]
 										: defaultImage
 								}
+								//layout="fill"
+								//objectFit="contain"
+								width={200}
+								height={200}
 								alt={
 									props.allStories[activeStories[0]] ? props.allStories[activeStories[0]].alt : ""
 								}
@@ -1331,60 +1339,66 @@ export default function HomeClient(props: any) {
 						</Link>
 
 						<div
-						//ref={gsapContainer2}
-						//className="s2"
+							//ref={gsapContainer2}
+							//className="s2"
+							style={{
+								//gridArea: "1/1/-1/-1",
+
+								background:
+									"linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 145, 145, 0) 60%)",
+								filter:
+									"progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#ff9191',GradientType=1)",
+							}}
+							className={`bp481:grid-in-[one] whitespace-nowrap grid pointer-events-none break-all rounded-[10px] overflow-hidden w-full justify-self-center leading-[1.2]`}
 						>
-							<StoryOneTitle>
+							<h2
+								className={`whitespace-pre-wrap break-words text-white px-[13px] pt-0 pb-[8px] w-full self-end text-[2rem] bp480:text-[1rem] bp700:text-[1.5rem] bp1000:text-[2rem] text-center justify-self-center`}
+							>
 								{props.allStories[activeStories[0]]
 									? props.allStories[activeStories[0]].title
 									: "Ooops! this article is not available at this time."}
-								style=
-								{{
-									gridArea: "1/1/-1/-1",
-
-									background:
-										"linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 145, 145, 0) 60%)",
-									filter:
-										"progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#ff9191',GradientType=1)",
-								}}
-								className=
-								{`bp481:grid-in-[one] whitespace-nowrap grid pointer-events-none break-all rounded-[10px] overflow-hidden w-full justify-self-center leading-[1.2]`}
-							</StoryOneTitle>
+							</h2>
 						</div>
 					</ItemWrapper>
 				</CarouselItem>
 				<CarouselItem>
 					<ItemWrapper>
-						<LinkWrapper2
-							href={`/blog/${
-								props.allStories[activeStories[1]]
-									? props.allStories[activeStories[1]].slug
-									: "nada"
-							}`}
-							state={{ art: props.allStories[activeStories[1]] }}
+						<Link
+							href={{
+								pathname: `/blog/${
+									props.allStories[activeStories[1]]
+										? props.allStories[activeStories[1]].slug
+										: "nada"
+								}`,
+								query: { art: props.allStories[activeStories[1]] },
+							}}
+							className={`w-full self-center grid bp480:grid-in-[two]`}
+							//style={{ gridArea: "1/1/-1/-1" }}
 						>
-							<Img2
-								className="s1"
-								// image_url={
-								//   props.allStories[activeStories[1]]
-								//     ? props.allStories[activeStories[1]].urls[0]
-								//     : defaultImage
-								// }
+							<Image
+								//className="s1"
+
 								src={
 									props.allStories[activeStories[1]]
 										? props.allStories[activeStories[1]].urls[0]
 										: defaultImage
 								}
+								//layout="fill"
+								//objectFit="contain"
+								width={200}
+								height={200}
 								alt={
 									props.allStories[activeStories[1]] ? props.allStories[activeStories[1]].alt : ""
 								}
-							></Img2>
-						</LinkWrapper2>
+								className="relative rounded=[10px] w-full"
+								style={{ boxShadow: "0 1px 4px 0 rgba(12, 12, 13, 0.1)" }}
+							></Image>
+						</Link>
 
 						<div
 							//className="s2"
 							style={{
-								gridArea: "1/1/-1/-1",
+								//gridArea: "1/1/-1/-1",
 
 								background:
 									"linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(255, 145, 145, 0) 60%)",
@@ -1393,11 +1407,13 @@ export default function HomeClient(props: any) {
 							}}
 							className={`bp481:grid-in-[two] whitespace-nowrap grid pointer-events-none break-all rounded-[10px] overflow-hidden w-full justify-self-center leading-[1.2]`}
 						>
-							<StoryOneTitle>
+							<h2
+								className={`whitespace-pre-wrap break-words text-white px-[13px] pt-0 pb-[8px] w-full self-end text-[2rem] bp480:text-[1rem] bp700:text-[1.5rem] bp1000:text-[2rem] text-center justify-self-center`}
+							>
 								{props.allStories[activeStories[1]]
 									? props.allStories[activeStories[1]].title
 									: "Ooops! this article is not available at this time."}
-							</StoryOneTitle>
+							</h2>
 						</div>
 					</ItemWrapper>
 				</CarouselItem>
