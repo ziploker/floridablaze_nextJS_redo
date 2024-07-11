@@ -29,7 +29,7 @@ export default function Header() {
       <div
         className={`fixed ${
           logoScrolled === "true" ? "opacity-100" : "opacity-0"
-        } top-0 ease-linear duration-[.3s] z-20 w-full max-w[2000px] min-w=[269px] h-[50px] bg-[#f4f4f4]`}
+        } top-0 z-20 w-full max-w[2000px] min-w=[269px] h-[50px] bg-[#f4f4f4]`}
       />
       <CompanyLogo
         logoScrolled={logoScrolled}
