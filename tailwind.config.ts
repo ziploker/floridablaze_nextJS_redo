@@ -54,6 +54,7 @@ const config: Config = {
 			},
 			gridTemplateAreas: {
 				home: ["one . two"],
+				single: ["main"],
 			},
 			fontFamily: {
 				fira: ["var(--font-fira)"],
