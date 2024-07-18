@@ -36,7 +36,22 @@ export default async function myServerComp(props: Props) {
 	// 		await prisma.$disconnect()
 	// 		process.exit(1)
 	// 	})
-	const allStories = await prisma.stories.findMany()
+
+	const allStories = await prisma.stories.findMany({
+		orderBy: [
+			{
+				created_at: "desc",
+			},
+		],
+		select: {
+			id: true,
+			title: true,
+			created_at: true,
+			urls: true,
+		},
+	})
+
+	console.log("ALLSTORIES==================", allStories)
 
 	return (
 		<>
