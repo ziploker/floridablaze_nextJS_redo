@@ -142,7 +142,7 @@ model stories {
   url           String?  @db.VarChar
   date          String?  @db.VarChar
   topic         String?  @db.VarChar
-  slug          String?  @db.VarChar
+  slug          String?  @unique @db.VarChar
   author_nick   String?  @db.VarChar
   author_avatar String?  @db.VarChar
   created_at    DateTime @db.Timestamp(6)

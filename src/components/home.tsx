@@ -48,6 +48,7 @@ export default async function myServerComp(props: Props) {
 			title: true,
 			created_at: true,
 			urls: true,
+			slug: true,
 		},
 	})
 

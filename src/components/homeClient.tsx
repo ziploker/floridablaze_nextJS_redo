@@ -285,7 +285,7 @@ export default function HomeClient(props: any) {
 							<Link
 								href={{
 									pathname: `/blog/${story.slug}`,
-									query: { art: story },
+									//query: { art: story },
 								}}
 								//style={{ gridArea: "1/1/-1/-1" }}
 								className={`w-full justify-self-center grid-in-main`}
