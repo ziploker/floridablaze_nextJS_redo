@@ -1,5 +1,6 @@
 "use server"
 import { PrismaClient } from "@prisma/client"
+import { notFound } from "next/navigation"
 
 export default async function Story(params: any) {
 	const prisma = new PrismaClient()
@@ -12,10 +13,8 @@ export default async function Story(params: any) {
 		},
 	})
 
-	if (story) {
-		console.log("found a story", story)
-	} else {
-		console.log("diddent find a story", story)
+	if (!story) {
+		return notFound()
 	}
 
 	return <h1>Story</h1>
