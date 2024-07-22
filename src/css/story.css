@@ -1,0 +1,17 @@
+.article {
+  line-height: 1.9em;
+  grid-area: 5/1/6/2;
+  margin-top: 50px;
+
+  h1 {
+    margin: 20px 0;
+  }
+
+  h2 {
+    margin-bottom: 25px;
+  }
+
+  p {
+    margin: 20px 0 40px 0;
+  }
+}
