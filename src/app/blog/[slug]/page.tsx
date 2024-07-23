@@ -6,6 +6,40 @@ import "../../../css/story.css";
 import dummy_avatar from "../../../images/dummy_avatar.png";
 import Header from "../../../components/header";
 
+import { Metadata, ResolvingMetadata } from "next";
+
+// type Props = {
+//   params: { id: string }
+//   searchParams: { [key: string]: string | string[] | undefined }
+// }
+
+export async function generateMetadata(params: any): Promise<Metadata> {
+  const prisma = new PrismaClient();
+  console.log("::PARAMS:::::::::::::::::::::", params);
+
+  let theSlug = params.params.slug as string;
+  console.log(
+    "in story==============================================",
+    theSlug
+  );
+  const artData = await prisma.stories.findUnique({
+    where: {
+      slug: theSlug,
+    },
+  });
+
+  if (!artData) {
+    return {
+      title: "",
+    };
+  }
+
+  return {
+    title: artData.title,
+    description: artData.description,
+  };
+}
+
 export default async function Story(params: any) {
   const prisma = new PrismaClient();
 
@@ -46,16 +80,16 @@ export default async function Story(params: any) {
         <div
           style={{ gridArea: "4/1/5/2" }}
           className="grid 
-	  grid-cols-[minmax(100px,min-content)] 
-	  auto-rows-[1fr 1fr]
-	  mt-0
-	  grid-areas-story1
-	  bp420:overflow-hidden
-	  bp420:grid-cols-[minmax(0px,min-content)_1fr_minmax(0px,min-content)]
-	  bp420:auto-rows-[1fr_minmax(0px, min-content)]
-	  bp420:grid-areas-story2
-	  bp420:mt-[25px]
-	  bp420:content-center"
+                      grid-cols-[minmax(100px,min-content)] 
+                      auto-rows-[1fr 1fr]
+                      mt-0
+                      grid-areas-story1
+                      bp420:overflow-hidden
+                      bp420:grid-cols-[minmax(0px,min-content)_1fr_minmax(0px,min-content)]
+                      bp420:auto-rows-[1fr_minmax(0px, min-content)]
+                      bp420:grid-areas-story2
+                      bp420:mt-[25px]
+                      bp420:content-center"
         >
           <div className="flex grid-in-flexbox items-center bp420:justify-start bp420:mt-[8px]">
             <Image
