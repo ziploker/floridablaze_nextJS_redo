@@ -150,7 +150,8 @@ model stories {
   caption       String?
   urls          String[] @default([])
   alt           String?  @default("") @db.VarChar
-  description   String?  @default("") @db.VarChar
+  meta_description   String?  @default("") @db.VarChar
+  meta_title     String?  @default("") @db.VarChar
 }
   // id: 1,                                                          
   // title: "title of the story",                                    

@@ -32,21 +32,19 @@ export async function generateMetadata(params: any): Promise<Metadata> {
 	}
 
 	return {
-		// <link
-		//   rel="canonical"
-		//   href={`https://floridablaze.io/blog/${artData.slug}`}
-		// ></link>
+		title: artData.meta_title as string,
+		description: artData.meta_description as string,
 		metadataBase: new URL("https://floridablaze.io"),
 		alternates: {
 			canonical: `blog/${artData.slug}`,
-			languages: {
-				"en-US": "/en-US",
-			},
+			// languages: {
+			// 	"en-US": "/en-US",
+			// },
 		},
-
+		// <meta name="robots" content="index,follow,max-image-preview:large">
 		openGraph: {
-			title: artData.title as string,
-			description: artData.description as string,
+			title: artData.meta_title as string,
+			description: artData.meta_description as string,
 			url: `https://floridaBlaze.io/blog/${artData.slug}`,
 			siteName: "FloridaBlaze",
 			images: [

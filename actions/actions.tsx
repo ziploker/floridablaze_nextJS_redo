@@ -74,6 +74,7 @@ export const addStory = async (theUrl: any, formData: FormData) => {
 	const prisma = new PrismaClient()
 
 	const title = formData.get("title")
+	const meta_title = formData.get("meta_title")
 	const keywords = formData.get("keywords")
 	const body = formData.get("body")
 	//url
@@ -88,7 +89,7 @@ export const addStory = async (theUrl: any, formData: FormData) => {
 	const caption = formData.get("caption")
 	const urls = [`https://weedblogimages.s3.amazonaws.com/${theUrl}`]
 	const alt = formData.get("alt")
-	const description = formData.get("description")
+	const meta_description = formData.get("meta_description")
 
 	//   id            BigInt   @id @default(autoincrement())
 	//   title         String?  @db.VarChar
@@ -112,6 +113,7 @@ export const addStory = async (theUrl: any, formData: FormData) => {
 	await prisma.stories.create({
 		data: {
 			title: title as string,
+			meta_title: meta_title as string,
 			keywords: keywords as string,
 			body: body as string,
 			date: date as string,
@@ -122,7 +124,7 @@ export const addStory = async (theUrl: any, formData: FormData) => {
 			caption: caption as string,
 			urls: urls as [],
 			alt: alt as string,
-			description: description as string,
+			meta_description: meta_description as string,
 		},
 	})
 

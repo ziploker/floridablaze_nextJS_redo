@@ -27,6 +27,16 @@ export default function FormAddStory(props: any) {
 				<input
 					type="text"
 					className="form-control w-full h-full"
+					name="meta_title"
+					placeholder="meta title of the story...."
+					required
+				/>
+			</div>
+
+			<div className="field w-screen h-full border border-black border-1">
+				<input
+					type="text"
+					className="form-control w-full h-full"
 					name="slugifyMe"
 					placeholder="slugify me"
 				/>
@@ -91,8 +101,8 @@ export default function FormAddStory(props: any) {
 				<input
 					type="text"
 					className="form-control w-full h-full"
-					name="description"
-					placeholder="Description seo meta tags (JSON-LD)"
+					name="meta_description"
+					placeholder="Meta Description seo meta tags (JSON-LD)"
 				/>
 			</div>
 
