@@ -7,6 +7,7 @@ import CompanyLogo from "@/components/companyLogo";
 import LongNav from "@/components/longNav";
 import Hamburger from "@/components/hamburger";
 import SideMenu from "../components/sidemenu";
+import Login from "./login";
 
 // interface Props {
 // 	openSideMenu: string
@@ -23,9 +24,14 @@ export default function Header() {
   const [hamburgerScrolled, setHamburgerScrolled] = useState("false");
   const [openSideMenu, setOpenSideMenu] = useState("false");
   const userState = { loggedInStatus: "NOT_LOGGED_IN" };
+  const [openLoginMenu, setOpenLoginMenu] = useState(false);
 
   return (
     <div className="relative grid grid-cols-[minmax(180px,280px)1fr] grid-areas-[left_right] grid-rows-[69px] gap-[8px] mt-[15px] max-w-[2000px] overflow-hidden cl_bp_520:grid-rows-[80px]">
+      <Login
+        openLoginMenu={openLoginMenu}
+        setOpenLoginMenu={setOpenLoginMenu}
+      />
       <div
         className={`fixed ${
           logoScrolled === "true" ? "opacity-100" : "opacity-0"
@@ -50,6 +56,8 @@ export default function Header() {
         setLeafScrolledSoChangeColorUp={setLeafScrolledSoChangeColorUp}
         scrollDir={scrollDir}
         setScrollDir={setScrollDir}
+        openLoginMenu={openLoginMenu}
+        setOpenLoginMenu={setOpenLoginMenu}
       />
       <Hamburger
         leafScrolledSoChangeColorDown={leafScrolledSoChangeColorDown}

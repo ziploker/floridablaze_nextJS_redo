@@ -16,6 +16,7 @@
     "dotenv": "^16.4.5",
     "javascript-time-ago": "^2.5.10",
     "jquery": "^3.7.1",
+    "mailgun.js": "^10.2.3",
     "modern-normalize": "^2.0.0",
     "next": "14.2.4",
     "nodejs-s3-typescript": "^3.1.5",
