@@ -5,6 +5,14 @@ import { s3Client } from "nodejs-s3-typescript"
 import { getDate, getMonth, getYear } from "date-fns"
 import slugify from "react-slugify"
 
+//import FormData from "form-data"
+import Mailgun from "mailgun.js"
+const mailgun = new Mailgun(FormData)
+const mg = mailgun.client({
+	username: "api",
+	key: process.env.MAILGUN_API || "key-yourkeyhere",
+})
+
 const friendlyDateMaker = (currentDate: any) => {
 	let mon = ""
 	let ordinal = ""
@@ -68,6 +76,31 @@ const s3Config = {
 	region: process.env.AWS_REGION as string,
 	accessKeyId: process.env.AWS_ACCESS_ID as string,
 	secretAccessKey: process.env.AWS_SECRET_ID as string,
+}
+
+export const createNewUser = async (formData: FormData) => {
+	const email = formData.get("email")
+	const password = formData.get("password")
+	const remember = formData.get("remember")
+
+	console.log(
+		"check-----------",
+		process.env.MAILGUN_API,
+		email,
+		password,
+		remember ? "remember me" : "forget it"
+	)
+
+	mg.messages
+		.create("mg.floridablaze.io", {
+			from: "FloridaBlaze Staff <admin@floridablaze.io>",
+			to: [email as string],
+			subject: "Hello",
+			text: "Testing some Mailgun awesomness!",
+			html: "<h1>Testing some Mailgun awesomness!</h1>",
+		})
+		.then((msg) => console.log(msg)) // logs response data
+		.catch((err) => console.error(err)) // logs any error
 }
 
 export const addStory = async (theUrl: any, formData: FormData) => {
