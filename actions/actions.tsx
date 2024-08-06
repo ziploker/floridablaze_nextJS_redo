@@ -5,6 +5,7 @@ import { s3Client } from "nodejs-s3-typescript";
 import { getDate, getMonth, getYear } from "date-fns";
 import slugify from "react-slugify";
 import { z } from "zod";
+import { v4 as uuidv4 } from "uuid";
 
 //import FormData from "form-data";
 import Mailgun from "mailgun.js";
@@ -86,27 +87,32 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
   const password = formData.get("password");
   const remember = formData.get("remember");
 
-  // creating a schema
+  //get envoinment variabvle
+  const env = process.env.NODE_ENV;
+  let myHostName = "";
+  if (env == "development") {
+    myHostName = "127.0.0.1";
+  } else if (env == "production") {
+    myHostName = "https://floridablaze.io";
+  }
+
+  // setup ZOD to check data
   const UserSchema = z.object({
     email: z.string().email(),
     password: z.string().min(4),
   });
 
-  // extract the inferred type
   type User = z.infer<typeof UserSchema>;
 
-  //create zodUserInfo
   const zodUserInfo: User = {
     email: email as string,
     password: password as string,
   };
 
-  // parsing
-
-  // Return early if the form data is invalid
+  // parsing form data and Return early if the form data is invalid
   console.log("EEEEEE", UserSchema.safeParse(zodUserInfo).error?.format());
 
-  //set error message for client and return early
+  //if parsing data gave error, set error message for client and return early
   if (!UserSchema.safeParse(zodUserInfo).success) {
     let em = "";
 
@@ -128,6 +134,10 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
   }
   try {
     //throw new Error("test error to see if it catches");
+    //set up new user account
+
+    const token = uuidv4().toString().replace(/-/g, "");
+    console.log("TokenCheck", token);
 
     console.log(
       "info",
@@ -135,6 +145,34 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
         " & " +
         UserSchema.safeParse(zodUserInfo).data?.password
     );
+
+    mg.messages.create("mg.floridablaze.io", {
+      from: "FloridaBlaze Staff <admin@mg.floridablaze.io>",
+      to: [email as string],
+      "h:List-Unsubscribe":
+        "<mailto:admin@floridablaze.io?subject=unsubscribe>",
+      "h:Reply-To": "FlordaBlaze Staff <admin@floridablaze.io>",
+      subject: "Welcome to floridablaze.io",
+      text: "Testing some Mailgun awesomness!",
+      html: `<html>
+          <body>
+              <h1> Hi NAMER,</h1>
+              
+              <p> Thank you for registering at Floridablaze<br>
+              Please navigate to the link below to activate your account<br><br>
+
+              ${myHostName}/registration/${token}<br></p>
+
+              <p>Thank you,<br>
+
+              
+              <em>-Floridablaze Team</em></p><br><br><br>
+
+              If You wish to unsubscribe click <a href=${myHostName}/unsubscribe/${email}>HERE</a>
+
+          </body>
+      </html>`,
+    });
   } catch (error) {
     return { message: "failed to create user" };
   }
@@ -156,17 +194,6 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
   // 	password,
   // 	remember ? "remember me" : "forget it"
   // )
-
-  // mg.messages
-  // 	.create("mg.floridablaze.io", {
-  // 		from: "FloridaBlaze Staff <admin@floridablaze.io>",
-  // 		to: [email as string],
-  // 		subject: "Hello",
-  // 		text: "Testing some Mailgun awesomness!",
-  // 		html: "<h1>Testing some Mailgun awesomness!</h1>",
-  // 	})
-  // 	.then((msg) => console.log(msg)) // logs response data
-  // 	.catch((err) => console.error(err)) // logs any error
 };
 
 export const addStory = async (theUrl: any, formData: FormData) => {
