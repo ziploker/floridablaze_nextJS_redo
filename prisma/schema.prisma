@@ -176,7 +176,7 @@ model users {
   email                    String?          @db.VarChar
   full_name                String?          @db.VarChar
   password_digest          String?          @db.VarChar
-  confirm_token            String?          @db.VarChar
+  confirm_token            String?          @unique @db.VarChar
   isAdmin                  Boolean?
   email_confirmed          String?          @db.VarChar
   opt_in                   Boolean?
