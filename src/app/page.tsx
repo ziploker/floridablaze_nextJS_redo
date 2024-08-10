@@ -4,7 +4,7 @@ import "server-only"
 import HomeClientWrapper from "../components/homeClientWrapper"
 import Home from "@/components/home"
 import Header from "@/components/header"
-import SignUp from "../components/signUp"
+
 //import "../css/global";
 
 export default function Page() {
@@ -18,9 +18,6 @@ export default function Page() {
 				{/* @ts-expect-error Server Component */}
 				<Home data="123" />
 			</HomeClientWrapper>
-
-			{/* @ts-expect-error Server Component */}
-			<SignUp />
 		</>
 	)
 }
