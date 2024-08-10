@@ -69,14 +69,33 @@ export default async function NewUserSetup(params: any) {
 		"in NewUserSetup==============================================",
 		incomingTokenFromEmail
 	)
-	const userAccount = await prisma.users.findUnique({
-		where: {
-			confirm_token: incomingTokenFromEmail,
-		},
-	})
+	// const userAccount = await prisma.users.findUnique({
+	// 	where: {
+	// 		confirm_token: incomingTokenFromEmail,
+	// 	},
+	// })
 
-	if (!userAccount) {
-		return notFound()
+	//clear confirm_token (string)
+	//set email_confirmed (string)
+
+	try {
+		const updatedUser = await prisma.users.update({
+			where: {
+				confirm_token: incomingTokenFromEmail,
+			},
+			data: {
+				confirm_token: "",
+				email_confirmed: "true",
+			},
+		})
+		// res.status(200).json({
+		// 	message: 'Task created',
+		// 	success: true
+		// })
+		console.log("AFTER UPDATE USER", updatedUser)
+	} catch (error) {
+		console.error("Request error", error)
+		//res.status(500).json({ error: "Error creating tasks", success:false });
 	}
 
 	// const articleStructuredDataAsJson = {
@@ -110,92 +129,7 @@ export default async function NewUserSetup(params: any) {
 
 	return (
 		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(articleStructuredDataAsJson),
-				}}
-			/>
-			<Header />
-			<div className="grid grid-cols-[1fr] bp900:grid-cols-[minmax(555px,730px)300px] bp900:justify-center bp900:mx-[14px] bp900:mt-[20px] bp900:mb-0 bp900:gap-x-[28px]">
-				<div className="pb-[15px] justify-self-start" style={{ gridArea: "1/1/2/2" }}>
-					<h1 className="text-[#111111] font-bold leading-[1.1em] -tracking-[2px] text-[2rem]">
-						{artData.title}
-					</h1>
-				</div>
-
-				<div
-					style={{ gridArea: "3/1/4/2" }}
-					className="leading-[1.7] italic text-[#999999] px-0 pl-0 pr-[5px] vorder-b-[1px] border-solid border-[#c0c0c0]"
-					dangerouslySetInnerHTML={{ __html: artData.caption as string }}
-				></div>
-
-				<div
-					style={{ gridArea: "4/1/5/2" }}
-					className="grid 
-                      grid-cols-[minmax(100px,min-content)] 
-                      auto-rows-[1fr 1fr]
-                      mt-0
-                      grid-areas-story1
-                      bp420:overflow-hidden
-                      bp420:grid-cols-[minmax(0px,min-content)_1fr_minmax(0px,min-content)]
-                      bp420:auto-rows-[1fr_minmax(0px, min-content)]
-                      bp420:grid-areas-story2
-                      bp420:mt-[25px]
-                      bp420:content-center"
-				>
-					<div className="flex grid-in-flexbox items-center bp420:justify-start bp420:mt-[8px]">
-						<Image
-							// src={artData.author_avatar as string}
-							src={dummy_avatar}
-							alt=""
-							className="w-[40px] h-[40px] grid-in-image 
-			border-solid border-[1px] border-[gray] rounded-[50%]
-			mr-[8px]"
-							width={40}
-							height={40}
-						/>
-
-						<h4 style={{ fontSize: ".7rem", lineHeight: "normal" }}>by FloridaBlaze</h4>
-						<div style={{ margin: "0px 5px" }}>|</div>
-						<h4
-							style={{
-								fontFamily: "serif",
-								color: "#777777",
-								fontSize: ".7rem",
-								lineHeight: "normal",
-								marginRight: "8px",
-							}}
-						>
-							{artData.date}
-						</h4>
-					</div>
-
-					<div className="flex justify-end grid-in-social self-center">
-						<h3>social buttons here</h3>
-					</div>
-				</div>
-
-				<div className="w-full h-0 pt-[60%] relative" style={{ gridArea: "2/1/3/2" }}>
-					<Image
-						src={artData.urls[0]}
-						alt={artData.alt as string}
-						className="absolute top-0 left-0 w-full h-full"
-						width={600}
-						height={500}
-					/>
-				</div>
-
-				<div className="article" dangerouslySetInnerHTML={{ __html: artData.body as string }}></div>
-
-				{/* <Comments userState={userState} artData={artData} slug={artData.slug} /> */}
-				<Comments artData={artData} />
-
-				{/* <div
-					style={{ gridArea: "6/1/7/2" }}
-					className="hidden bp900:border-[10px] bp900:border-solid bp900:border-pink bg-[pink] w-full h-full"
-				/> */}
-			</div>
+			<h1></h1>
 		</>
 	)
 }

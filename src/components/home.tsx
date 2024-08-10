@@ -5,7 +5,7 @@ import HomeClient from "./homeClient"
 interface Props {
 	data: string
 }
-export default async function myServerComp(props: Props) {
+export default async function myServerComp(props: any) {
 	//console.log("+++++++++++++++++++++   MSC ", props.data)
 
 	//const response = await fetch("...");
