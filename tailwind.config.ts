@@ -20,7 +20,7 @@ const config: Config = {
       bp481: "481px",
       bp900: "900px",
       bp420: "420px",
-
+      bp985: "985px",
       bp700: "700px",
       bp1000: "1000px",
 

@@ -128,11 +128,11 @@ export default function Login(props, { error, reset }) {
     errors: {},
   });
 
-  useEffect(() => {
-    // Optionally log the error to an error reporting service
-    console.error(error);
-    console.log("ERRORR", error);
-  }, [error]);
+  // useEffect(() => {
+  //   // Optionally log the error to an error reporting service
+  //   console.error("errorr");
+  //   // console.log("ERRORR", error);
+  // }, [error]);
 
   const [onHover, setOnHover] = React.useState(false);
 

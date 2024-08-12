@@ -1,0 +1,312 @@
+.SignupWrapper {
+  @media only screen and (max-width: 985px) {
+    grid-template-columns: 2% 1fr 2%;
+    min-width: 100%;
+    border-top: 37px solid white;
+  }
+
+  position: relative;
+
+  background-color: #ffffff;
+  /*display: ${(props) => (props.show_offer == "true" ? "none" : "grid")};*/
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  grid-template-columns:
+    minmax(3%, 0.5fr) minmax(400px, 586px) minmax(500px, 700px)
+    minmax(3%, 0.5fr);
+
+  text-align: center;
+  height: 100%;
+
+  border-bottom: 37px white solid;
+
+  /*background: url("wleafRed") fixed;*/
+  background-size: cover;
+  background-position: right bottom;
+  background-attachment: fixed;
+}
+
+.SignupMaskWrapper {
+  @media only screen and (max-width: 985px) {
+    grid-area: 1/2/2/3;
+    width: 100%;
+  }
+
+  display: grid;
+  grid-area: 1/3/2/4;
+  width: 100%;
+  height: 100%;
+
+  grid-template-rows: min-content 1fr;
+}
+
+.BottomFiLL {
+  @media only screen and (max-width: 985px) {
+    grid-area: 2/1/3/4;
+  }
+
+  grid-area: 2/1/3/2;
+  background: white;
+  width: 100%;
+  height: 100%;
+}
+
+.SignupMaskImageContainer {
+  @media only screen and (max-width: 985px) {
+    grid-area: 1/1/2/4;
+  }
+
+  grid-area: 1/1/2/2;
+}
+
+.LeftFiller {
+  grid-area: 1/1/2/2;
+  background: white;
+  width: 100%;
+  height: 100%;
+}
+
+.RightFiller {
+  @media only screen and (max-width: 985px) {
+    grid-area: 1/3/2/4;
+  }
+
+  grid-area: 1/4/2/5;
+  background: white;
+  width: 100%;
+  height: 100%;
+}
+
+.LoginCardWrapper {
+  background: white;
+  grid-area: 1/3/2/4;
+  height: 100%;
+}
+
+.LoginCard {
+  @media only screen and (max-width: 720px) {
+    grid-area: 2/1/3/4;
+  }
+  position: relative;
+
+  box-sizing: border-box;
+
+  padding: 75px 10px 0px 10px;
+
+  background-color: #fff;
+
+  justify-self: start;
+  align-self: center;
+
+  overflow: hidden;
+}
+
+.LoginCardFillLeft {
+  background: white;
+  grid-area: 2/1/3/2;
+  width: 100%;
+  height: 100%;
+}
+
+.LoginCardFillRight {
+  background: white;
+  grid-area: 2/3/3/4;
+  width: 100%;
+  height: 100%;
+}
+
+.Span {
+  padding: 5px 12px;
+  margin-right: 5px;
+}
+
+.StatusSpinner {
+  transition: opacity 0.4s;
+  transition-timing-function: ease-out;
+}
+
+.LeftSection {
+  align-self: start;
+
+  text-align: left;
+  grid-area: 1/2/2/3;
+  height: 100%;
+
+  font-style: normal;
+  font-weight: 800;
+
+  h2 {
+    color: rgb(6, 7, 1, 0.9);
+    padding: 47px 0 0 10px;
+    margin: 0px;
+    font-size: 3rem;
+    word-break: keep-all;
+    background: white;
+  }
+
+  sub {
+    color: rgb(6, 7, 1, 0.9);
+  }
+
+  @media only screen and (max-width: 985px) {
+    grid-area: 2/2/3/3;
+    border-right: initial;
+    max-width: initial;
+  }
+}
+
+.SocialMedia {
+  display: grid;
+  grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
+  grid-template-rows: min-content;
+
+  h3 {
+    grid-area: 1/1/2/3;
+    justify-self: center;
+
+    margin-bottom: 10px;
+  }
+}
+
+.RightSection {
+  grid-area: 1/3/2/4;
+
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+
+  display: grid;
+  padding: 0px 50px 50px 14px;
+
+  grid-template-columns: 54px 30px 1fr;
+  grid-template-rows: 250px repeat(4, 58px) 1fr;
+
+  align-self: start;
+
+  max-width: 800px;
+
+  @media only screen and (max-width: 985px) {
+    grid-area: 1/2/2/3;
+    grid-template-columns: 36px 30px 1fr;
+    grid-template-rows: 284px repeat(4, min-content) 1fr;
+  }
+
+  @media only screen and (max-width: 450px) {
+    grid-template-columns: 4px 30px 1fr;
+    grid-template-rows: 192px repeat(4, min-content) 1fr;
+    padding: 0px 5px 11px 5px;
+  }
+}
+
+.WeedBullet1 {
+  width: 21px;
+  grid-area: 2/2/3/3;
+  align-self: start;
+  justify-self: center;
+  margin-top: 1.5px;
+  margin-top: 20px;
+}
+
+.WeedBullet2 {
+  width: 21px;
+  grid-area: 3/2/4/3;
+  align-self: start;
+  justify-self: center;
+  margin-top: 1.5px;
+  margin-top: 20px;
+}
+
+.WeedBullet3 {
+  width: 21px;
+  grid-area: 4/2/5/3;
+  align-self: start;
+  justify-self: center;
+  margin-top: 1.5px;
+  margin-top: 20px;
+}
+
+.WeedBullet4 {
+  width: 21px;
+  grid-area: 5/2/6/3;
+  align-self: start;
+  margin-top: 20px;
+  justify-self: center;
+}
+
+.WeedBulletText1 {
+  grid-area: 2/3/3/4;
+  justify-self: start;
+  align-self: start;
+  margin-top: 19px;
+  padding-left: 10px;
+  font-size: 1.3rem;
+
+  text-align: start;
+
+  @media only screen and (max-width: 500px) {
+    font-size: 1rem;
+    margin-top: 26px;
+  }
+}
+
+.WeedBulletText2 {
+  grid-area: 3/3/4/4;
+  justify-self: start;
+  align-self: start;
+  padding-left: 10px;
+
+  margin-top: 19px;
+  font-size: 1.3rem;
+  text-align: start;
+  @media only screen and (max-width: 500px) {
+    font-size: 1rem;
+    margin-top: 26px;
+  }
+}
+
+.WeedBulletText3 {
+  grid-area: 4/3/5/4;
+  justify-self: start;
+  align-self: start;
+  font-size: 1.3rem;
+  padding-left: 10px;
+
+  margin-top: 19px;
+  text-align: start;
+  @media only screen and (max-width: 500px) {
+    font-size: 1rem;
+    margin-top: 26px;
+  }
+}
+
+.WeedBulletText4 {
+  grid-area: 5/3/6/4;
+  justify-self: start;
+  align-self: start;
+  padding-left: 10px;
+  font-size: 1.3rem;
+
+  margin-top: 19px;
+  text-align: start;
+  @media only screen and (max-width: 500px) {
+    font-size: 1rem;
+    margin-top: 26px;
+  }
+}
+
+.SignupMaskImage {
+  @media only screen and (max-width: 985px) {
+    width: 100%;
+  }
+
+  grid-area: 1/1/2/2;
+  width: 100%;
+
+  height: 100%;
+  max-width: 1400px;
+
+  max-height: 1125px;
+
+  justify-self: center;
+}

@@ -11,6 +11,7 @@
   "dependencies": {
     "@prisma/client": "^5.16.1",
     "@savvywombat/tailwindcss-grid-areas": "^4.0.0",
+    "bcrypt": "^5.1.1",
     "date-fns": "^3.6.0",
     "debounce": "^2.1.0",
     "dotenv": "^16.4.5",
@@ -32,6 +33,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/jquery": "^3.5.30",
     "@types/node": "^20",
     "@types/react": "^18.3.3",
