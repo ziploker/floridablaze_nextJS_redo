@@ -238,8 +238,8 @@ const ErrorWrapper = styled.div`
   justify-content: center;
   align-items: center;
   //padding: 10px 0px 0px 0px;
-  line-height: 0.7em;
-  height: 20px;
+  ////line-height: 0.7em;
+  ////height: 20px;
 `;
 const ErrorMsg = styled.h4`
   // font-size: 0.5rem;

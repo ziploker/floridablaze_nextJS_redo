@@ -470,7 +470,9 @@ export default function Signup(props: any, ref: any) {
             {/* <ErrorWrapper show_error_background={state.showErrorBackground}> */}
             <ErrorWrapper>
               {/* <Span wait_message={state.waitMessage}> {state.waitMessage}</Span> */}
-              <h4 className="Span"> "wait message ?"</h4>
+              <h4 className="Span" style={{ whiteSpace: "pre" }}>
+                {data?.message}
+              </h4>
               <XorCheckIcon
                 ////////status={state.status}
                 style={{ display: state.status == "" ? "none" : "initial" }}

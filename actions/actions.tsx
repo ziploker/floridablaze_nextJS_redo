@@ -8,6 +8,8 @@ import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
 import * as bcrypt from "bcrypt";
 
+const prisma = new PrismaClient();
+
 //import FormData from "form-data";
 import Mailgun from "mailgun.js";
 const mailgun = new Mailgun(FormData);
@@ -90,8 +92,6 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
   const remember = formData.get("remember");
   const roundsOfHashing = 10;
 
-  const prisma = new PrismaClient();
-
   //get envoinment variabvle
   const env = process.env.NODE_ENV;
   let myHostName = "";
@@ -103,9 +103,9 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
 
   // setup ZOD to check data
   const UserSchema = z.object({
-    fullName: z.string(),
+    fullName: z.string().min(5).max(20),
     email: z.string().email(),
-    password: z.string().min(4),
+    password: z.string().min(8).max(20),
   });
 
   type User = z.infer<typeof UserSchema>;
@@ -123,16 +123,36 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
   if (!UserSchema.safeParse(zodUserInfo).success) {
     let em = "";
 
+    if (UserSchema.safeParse(zodUserInfo).error?.format().fullName) {
+      em = "Full name is to short.\n";
+    }
+
     if (UserSchema.safeParse(zodUserInfo).error?.format().email) {
-      em = "email is invalid";
-      if (UserSchema.safeParse(zodUserInfo).error?.format().password) {
-        em = "email is invalid & password is too short";
-      }
-    } else {
-      if (UserSchema.safeParse(zodUserInfo).error?.format().password) {
-        em = "password is too short";
+      if (em != "") {
+        em = em + "Email doesn't look right.\n";
+      } else {
+        em = "Email doesn't look right.\n";
       }
     }
+
+    if (UserSchema.safeParse(zodUserInfo).error?.format().password) {
+      if (em != "") {
+        em = em + "Password is too short.\n";
+      } else {
+        em = "Password is too short.\n";
+      }
+    }
+
+    // if (UserSchema.safeParse(zodUserInfo).error?.format().email) {
+    //   em = "email is invalid";
+    //   if (UserSchema.safeParse(zodUserInfo).error?.format().password) {
+    //     em = "email is invalid & password is too short";
+    //   }
+    // } else {
+    //   if (UserSchema.safeParse(zodUserInfo).error?.format().password) {
+    //     em = "password is too short";
+    //   }
+    // }
 
     return {
       success: false,
@@ -159,9 +179,19 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
       roundsOfHashing
     );
 
+    let nickName = "";
+    const firstNickNameInArray = fullName?.toString().split(" ")[0];
+
+    if ((firstNickNameInArray?.length as number) > 1) {
+      nickName = firstNickNameInArray as string;
+    } else {
+      nickName = fullName as string;
+    }
+
     await prisma.users.create({
       data: {
         full_name: fullName as string,
+        nick: nickName,
         email: email as string,
         password_digest: hashedPassword as string,
         confirm_token: token,
@@ -170,16 +200,17 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
       },
     });
 
-    // 	mg.messages.create("mg.floridablaze.io", {
-    // 		from: "FloridaBlaze Staff <admin@mg.floridablaze.io>",
-    // 		to: [email as string],
-    // 		"h:List-Unsubscribe": "<mailto:admin@floridablaze.io?subject=unsubscribe>",
-    // 		"h:Reply-To": "FlordaBlaze Staff <admin@floridablaze.io>",
-    // 		subject: "Welcome to floridablaze.io",
-    // 		text: "Testing some Mailgun awesomness!",
-    // 		html: `<html>
+    // mg.messages.create("mg.floridablaze.io", {
+    //   from: "FloridaBlaze Staff <admin@mg.floridablaze.io>",
+    //   to: [email as string],
+    //   "h:List-Unsubscribe":
+    //     "<mailto:admin@floridablaze.io?subject=unsubscribe>",
+    //   "h:Reply-To": "FlordaBlaze Staff <admin@floridablaze.io>",
+    //   subject: "Welcome to floridablaze.io",
+    //   text: "Testing some Mailgun awesomness!",
+    //   html: `<html>
     //       <body>
-    //           <h1> Hi NAMER,</h1>
+    //           <h1> Hi ${nickName},</h1>
 
     //           <p> Thank you for registering at Floridablaze<br>
     //           Please navigate to the link below to activate your account<br><br>
@@ -194,7 +225,7 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
 
     //       </body>
     //   </html>`,
-    // 	})
+    // });
     console.log("after MGGGGGGGGGGGGG");
   } catch (error) {
     console.log("Some error occur", error);
@@ -221,8 +252,6 @@ export const createNewUser = async (initialState: any, formData: FormData) => {
 };
 
 export const addStory = async (theUrl: any, formData: FormData) => {
-  const prisma = new PrismaClient();
-
   const title = formData.get("title");
   const meta_title = formData.get("meta_title");
   const keywords = formData.get("keywords");
@@ -282,8 +311,6 @@ export const addStory = async (theUrl: any, formData: FormData) => {
 };
 
 export const seeRecords = async () => {
-  const prisma = new PrismaClient();
-
   const allUsers = await prisma.stories.findMany();
 
   return allUsers;
