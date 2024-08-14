@@ -102,15 +102,27 @@ export const AuthenticateUser = async (initialState: any, formData: FormData) =>
 	if (user) {
 		console.log("Login User Found in DB", user)
 
-		const passwordMatches = await bcrypt.compare(password as string, user.password_digest)
+		const passwordMatches = await bcrypt.compare(password as string, user.password_digest as string)
 
 		if (passwordMatches) {
 			console.log("passwords matched")
+			return {
+				success: true,
+				message: " You have been logged in successfully.",
+			}
 		} else {
-			console.log("passwords diddent match")
+			console.log("passwords diddn't match")
+			return {
+				success: false,
+				message: " Email Password combination incorrect.",
+			}
 		}
 	} else {
 		console.log("Login User NOTFound in DB")
+		return {
+			success: false,
+			message: " Email Password combination incorrect.",
+		}
 	}
 }
 

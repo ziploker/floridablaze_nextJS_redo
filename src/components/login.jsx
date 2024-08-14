@@ -10,8 +10,8 @@ import { useFormState } from "react-dom"
 //import axios from "axios";
 //import logoImg from "../../../assets/images/logoPlaceholder.jpg";
 //import Image from "next/image";
-//import redX from "../images/redXmark.jpg";
-//import greenCheck from "../images/s/greenCheck.png";
+import redX from "../images/redXmark.jpg"
+import greenCheck from "../images/greenCheck.png"
 //import tinyMan from "../images/tinyManLogo.png";
 //import lock from "../images/lockIcon.png";
 import "../css/login.css"
@@ -368,8 +368,8 @@ export default function Login(props, { error, reset }) {
 				<ErrorWrapper>
 					<XorCheckIcon
 						//status={state.status}
-						style={{ display: state2.status == "" ? "none" : "initial" }}
-						//src={state.status == "green" ? greenCheck : redX}
+						style={{ display: data?.success != undefined ? "initial" : "none" }}
+						src={data?.success ? greenCheck.src : redX.src}
 						alt=""
 					/>
 					{/* <h1 style={{ display: "none" }}>ss={state2.status}</h1> */}
