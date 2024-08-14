@@ -87,11 +87,31 @@ const s3Config = {
 export const AuthenticateUser = async (initialState: any, formData: FormData) => {
 	console.log("AuthenticateUser FORM DATA", formData)
 
-	const email = formData.get("email")
+	const userEmail = formData.get("email")
 	const password = formData.get("password")
 	const remember = formData.get("remember")
 
-	console.log("AuthenticateUser  ", email + " // " + password + " // " + remember)
+	console.log("AuthenticateUser  ", userEmail + " // " + password + " // " + remember)
+
+	const user = await prisma.users.findUnique({
+		where: {
+			email: userEmail as string,
+		},
+	})
+
+	if (user) {
+		console.log("Login User Found in DB", user)
+
+		const passwordMatches = await bcrypt.compare(password as string, user.password_digest)
+
+		if (passwordMatches) {
+			console.log("passwords matched")
+		} else {
+			console.log("passwords diddent match")
+		}
+	} else {
+		console.log("Login User NOTFound in DB")
+	}
 }
 
 //create new user
