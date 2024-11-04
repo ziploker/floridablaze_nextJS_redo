@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import "../../../css/story.css";
 import dummy_avatar from "../../../images/dummy_avatar.png";
-import Header from "../../../components/header";
+import Header from "../../../components/headerClient";
 import Comments from "../../../components/comments";
 
 import { Metadata, ResolvingMetadata } from "next";

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
-import { setFlagsFromString } from "v8";
+//import { setFlagsFromString } from "v8";
+import { logout } from "../../lib";
 
 interface Props {
   loggedInStatus?: string;
@@ -19,6 +20,8 @@ interface Props {
 
 export default function LongNav(props: any) {
   const longNavRef = useRef<HTMLInputElement>(null);
+  //const session = await getSession();
+  //console.log("inside LongNav, cheking sesion", props.session);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -115,14 +118,16 @@ export default function LongNav(props: any) {
           shop
         </li>
 
-        {props.userState.loggedInStatus == "LOGGED_IN"
+        {props.session?.user
           ? [
               <li
                 className="font-fira py-0 pr-0 pl-[4px] text-[.75rem] leading-[45px]"
                 key={3}
               >
                 {/* <a key={"a"} onClick={props.handleLogOutClick}>*/}
-                <a key={"a"}>Logout</a>
+                <a key={"a"} onClick={() => logout()}>
+                  Logout
+                </a>
               </li>,
               <span key={4} style={{ fontSize: ".8em", padding: "0 2px" }}>
                 |

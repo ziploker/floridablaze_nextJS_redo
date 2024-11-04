@@ -1,12 +1,13 @@
 import React from "react";
 
-import StyledSideMenu from "./sidemenu.styled";
+import StyledSideMenu from "./sidemenu.styled___DELETE";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Menu(props) {
   return (
-    <StyledSideMenu
+    <nav
+      className="StyledMenu"
       open_side_menu={props.open_side_menu}
       hamburger_scrolled={props.hamburger_scrolled}
     >
@@ -77,7 +78,7 @@ function Menu(props) {
         </li>
         */}
       </div>
-    </StyledSideMenu>
+    </nav>
   );
 }
 

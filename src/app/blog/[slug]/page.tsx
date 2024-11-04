@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import "../../../css/story.css";
 import dummy_avatar from "../../../images/dummy_avatar.png";
-import Header from "../../../components/header";
+import Header from "../../../components/headerClient";
 import Comments from "../../../components/comments";
 
 import { Metadata, ResolvingMetadata } from "next";
@@ -118,7 +118,7 @@ export default async function Story(params: any) {
         }}
       />
       <Header />
-      <div className="grid grid-cols-[1fr] bp900:grid-cols-[minmax(555px,730px)300px] bp900:justify-center bp900:mx-[14px] bp900:mt-[20px] bp900:mb-0 bp900:gap-x-[28px]">
+      <div className="grid grid-cols-[1fr] bp900:grid-cols-[minmax(555px,730px)300px] bp900:justify-center mx-[14px] mt-[20px] mb-0 bp900:gap-x-[28px]">
         <div
           className="pb-[15px] justify-self-start"
           style={{ gridArea: "1/1/2/2" }}
@@ -130,7 +130,7 @@ export default async function Story(params: any) {
 
         <div
           style={{ gridArea: "3/1/4/2" }}
-          className="leading-[1.7] italic text-[#999999] px-0 pl-0 pr-[5px] vorder-b-[1px] border-solid border-[#c0c0c0]"
+          className="leading-[1.7] italic text-[#999999] px-0 pl-0 pr-[5px] border-b-[1px] border-solid border-[#c0c0c0]"
           dangerouslySetInnerHTML={{ __html: artData.caption as string }}
         ></div>
 

@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Head from "next/head";
+
 // import Header from "@/components/header";
 //import SignUp from "../components/signUp"
 //const inter = Inter({ subsets: ["latin"] });

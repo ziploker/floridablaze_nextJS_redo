@@ -28,28 +28,6 @@ import {
   ErrorWrapper,
 } from "./AuthForm";
 
-// // // import axios from "axios"
-// // // import $ from "jquery"
-
-//import { gsap } from "gsap"
-
-// import { ScrollTrigger } from "gsap/ScrollTrigger"
-// gsap.registerPlugin(ScrollTrigger)
-// gsap.core.globals("ScrollTrigger", ScrollTrigger)
-
-///////////////////////////////////  HANDLE_CHANGE /////////////////////////////
-
-// // // function handleImageChange(e) {
-// // // 	formData.append("user[avatar]", e.target.files[0])
-
-// // // 	setState({
-// // // 		...state,
-// // // 		avatar: URL.createObjectURL(e.target.files[0]),
-// // // 	})
-
-// // // 	//if (e.target.files[0]) setState({ ...state, avatar: e.target.files[0] });
-// // // }
-
 const formData = new FormData();
 
 const initialState = {
@@ -60,25 +38,6 @@ const initialState = {
 export default function Signup(props: any, ref: any) {
   console.log("==============Signup Section===============");
   console.log("============= Signup Section Props===============", props);
-
-  // function useWindowDimensions() {
-  //   const [windowDimensions, setWindowDimensions] = useState(
-  //     getWindowDimensions()
-  //   );
-
-  //   useEffect(() => {
-  //     function handleResize() {
-  //       setWindowDimensions(getWindowDimensions());
-  //     }
-
-  //     window.addEventListener("resize", handleResize);
-  //     return () => window.removeEventListener("resize", handleResize);
-  //   }, []);
-
-  //   return windowDimensions;
-  // }
-
-  // // //const locationFromHook = useLocation()
 
   const [data, formAction] = useFormState(createNewUser, initialState);
 
@@ -109,133 +68,6 @@ export default function Signup(props: any, ref: any) {
     waitMessage: "",
   });
 
-  // // // const responseGoogle = async (response) => {
-  // // // 	//send googles response to registrations#google
-  // // // 	//console.log("google_response", response);
-
-  // // // 	axios
-  // // // 		.post(
-  // // // 			"/auth/rgsi",
-  // // // 			{
-  // // // 				data: {
-  // // // 					gtoken: "test_data",
-  // // // 				},
-  // // // 			},
-  // // // 			{
-  // // // 				headers: {
-  // // // 					Authorization: response.tokenId,
-  // // // 				},
-  // // // 			},
-  // // // 			{ wals: true }
-  // // // 		)
-  // // // 		.then((reithCredentisponse) => {
-  // // // 			//console.log("rgsi response", response.data.status)
-  // // // 			if (response.data.status == "green") {
-  // // // 				props.handleSuccessfulAuth(response.data)
-  // // // 				console.log("result from google signin axios call", response.data.error)
-  // // // 			} else if (response.data.status == "pink") {
-  // // // 				console.log("result from google signin axios call", response.data.error)
-  // // // 			} else {
-  // // // 				console.log("result from google signin axios call, this should never happen")
-  // // // 			}
-  // // // 		})
-  // // // 		.catch((error) => {
-  // // // 			//console.log("articleErrors", error)
-  // // // 		})
-  // // // }
-
-  // // // const responseFacebook = async (response) => {
-  // // // 	console.log("About to make axios call to send info to server", response)
-
-  // // // 	//send googles response to registrations#google
-  // // // 	//console.log("google_response", response);
-
-  // // // 	axios
-  // // // 		.post(
-  // // // 			"/auth/rfsi",
-  // // // 			{
-  // // // 				data: {
-  // // // 					gtoken: "test_data",
-  // // // 				},
-  // // // 			},
-  // // // 			{
-  // // // 				headers: {
-  // // // 					Authorization: JSON.stringify(response),
-  // // // 				},
-  // // // 			},
-  // // // 			{ withCredentials: true }
-  // // // 		)
-  // // // 		.then((response) => {
-  // // // 			//console.log("rgsi response", response.data.status)
-  // // // 			if (response.data.status == "green") {
-  // // // 				props.handleSuccessfulAuth(response.data)
-  // // // 				console.log("result from google signin axios call", response.data.error)
-  // // // 			} else if (response.data.status == "pink") {
-  // // // 				console.log("result from google signin axios call", response.data.error)
-  // // // 			} else {
-  // // // 				console.log("result from google signin axios call, this should never happen")
-  // // // 			}
-  // // // 		})
-  // // // 		.catch((error) => {
-  // // // 			//console.log("articleErrors", error)
-  // // // 		})
-  // // // }
-
-  // // // useEffect(() => {
-  // // // 	console.log("==============Signup section useEffect===============")
-
-  // // // 	let homeWrapper = document.querySelectorAll(".homeWrapper")
-  // // // 	let formItem = document.querySelectorAll(".formItemSqueeze")
-  // // // 	let formWrapper = document.querySelectorAll(".formWrapper")
-
-  // // // 	let tl = gsap.timeline({
-  // // // 		duration: ".1",
-  // // // 		scrollTrigger: {
-  // // // 			//markers: {startColor: "green", endColor: "red", fontSize: "12px"},
-  // // // 			trigger: homeWrapper,
-  // // // 			start: "25% 87%",
-  // // // 			end: "bottom bottom",
-  // // // 			toggleActions: "play none none none",
-  // // // 		},
-  // // // 	})
-
-  // // // 	tl.from(
-  // // // 		formWrapper,
-
-  // // // 		{
-  // // // 			opacity: 0,
-  // // // 		}
-  // // // 	)
-
-  // // // 	tl.from(
-  // // // 		formItem,
-
-  // // // 		{
-  // // // 			x: 100,
-  // // // 			opacity: 0,
-  // // // 			ease: "back",
-  // // // 			stagger: 0.1,
-  // // // 		},
-  // // // 		"<.1"
-  // // // 	)
-
-  // // // 	// function handleResize() {
-  // // // 	//   setWindowDimensions(getWindowDimensions());
-  // // // 	// }
-
-  // // // 	// window.addEventListener('resize', handleResize);
-
-  // // // 	// return () => window.removeEventListener('resize', handleResize);
-  // // // }, [])
-
-  // // function getWindowDimensions() {
-  // //   const { innerWidth: width, innerHeight: height } = window;
-  // //   return {
-  // //     width,
-  // //     height,
-  // //   };
-  // // }
-
   const validForm = () => {
     if (state.full_name) {
       return true;
@@ -264,30 +96,6 @@ export default function Signup(props: any, ref: any) {
 
   ///////////////////////////////////  SETUP ERRORMESSAGES //////////////////////
   let errorMessages = [];
-
-  // // // if (state.errors) {
-  // // // 	if (state.errors.success) {
-  // // // 		errorMessages.push(<ErrorMsg> {state.errors.success[0]} </ErrorMsg>)
-  // // // 	}
-
-  // // // 	if (state.errors.auth) {
-  // // // 		errorMessages.push(<ErrorMsg> {state.errors.auth[0]} </ErrorMsg>)
-  // // // 	}
-
-  // // // 	if (state.errors.password) {
-  // // // 		errorMessages.push(<ErrorMsg> {"Password " + state.errors.password[0]} </ErrorMsg>)
-  // // // 	}
-
-  // // // 	if (state.errors.password_confirmation) {
-  // // // 		errorMessages.push(
-  // // // 			<ErrorMsg> {"Confirmation " + state.errors.password_confirmation[0]} </ErrorMsg>
-  // // // 		)
-  // // // 	}
-
-  // // // 	if (state.errors.green) {
-  // // // 		errorMessages.push(<ErrorMsg> {state.errors.green} </ErrorMsg>)
-  // // // 	}
-  // // // }
 
   // to activate the input field while typing
   function activateField(e: any) {

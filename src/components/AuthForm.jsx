@@ -102,7 +102,7 @@ const Label = styled.label`
 
   @media only screen and (max-width: 985px) {
     // font-size: 2rem;
-    top: -36px;
+    //top: -36px;
   }
 `;
 const EmailLabel = styled(Label)`

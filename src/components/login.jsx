@@ -51,11 +51,13 @@ export default function Login(props, { error, reset }) {
     errors: {},
   });
 
-  // useEffect(() => {
-  //   // Optionally log the error to an error reporting service
-  //   console.error("errorr");
-  //   // console.log("ERRORR", error);
-  // }, [error]);
+  useEffect(() => {
+    if (data.success) {
+      setTimeout(function () {
+        props.setOpenLoginMenu(!props.openLoginMenu);
+      }, 3000);
+    }
+  }, [data]);
 
   const [onHover, setOnHover] = React.useState(false);
 

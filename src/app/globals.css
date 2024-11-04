@@ -178,7 +178,6 @@ body {
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
 
-  max-width: 2000px;
   body:not(.user-is-tabbing) button:focus,
   body:not(.user-is-tabbing) input:focus,
   body:not(.user-is-tabbing) select:focus,

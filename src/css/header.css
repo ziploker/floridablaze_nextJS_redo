@@ -1,0 +1,22 @@
+.headerWrapper {
+  display: grid;
+}
+
+.headerMain {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  grid-template-rows: 69px;
+  grid-template-areas: "left right";
+  gap: 8px;
+  width: 100%;
+  overflow: hidden;
+  max-width: 2000px;
+  margin: 15px auto 0 auto;
+
+  @media only screen and (min-width: 520px) {
+    grid-template-rows: 80px;
+  }
+}
+
+/* className="relative grid grid-cols-[minmax(180px,280px)1fr] grid-areas-[left_right] grid-rows-[69px] gap-[8px] mt-[15px] max-w-[2000px] overflow-hidden cl_bp_520:grid-rows-[80px]" */

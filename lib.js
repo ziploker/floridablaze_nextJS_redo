@@ -11,12 +11,11 @@ import { v4 as uuidv4 } from "uuid";
 import * as bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
+const secretKey = process.env.SESSION_SECRET;
+const secretKey2 = process.env.SESSION_SECRET2;
 
-const textEncoder = new TextEncoder();
-const key = textEncoder.encode("oooooooo");
-//const key = new TextEncoder().encode(secretKey);
-
-console.log("KEEEEEEEEEEEEEEY", key);
+const key = new TextEncoder().encode(secretKey);
+const key2 = new TextEncoder().encode(secretKey2);
 
 export async function encrypt(payload) {
   const alg = "HS256";
@@ -31,6 +30,7 @@ export async function decrypt(input) {
   const { payload } = await jwtVerify(input, key, {
     algorithms: ["HS256"],
   });
+  console.log("SA2", payload);
   return payload;
 }
 
@@ -66,7 +66,7 @@ export async function login(initialState, formData) {
     if (passwordMatches) {
       console.log("passwords matched");
       // Create the session
-      const expires = new Date(Date.now() + 10 * 1000);
+      const expires = new Date(Date.now() + 3600 * 1000 * 24);
       //console.log("PREEEEEEEEEEEE", user);
       user.id = user.id.toString();
       //console.log("PREEEEEEEEEEEE2", user);
@@ -102,9 +102,10 @@ export async function logout() {
 }
 
 export async function getSession() {
-  const session = cookies().get("session")?.value;
-  if (!session) return null;
-  return await decrypt(session);
+  const asession = cookies().get("session")?.value;
+  console.log("SA1", asession);
+  if (!asession) return null;
+  return await decrypt(asession);
 }
 
 export async function updateSession(request) {
